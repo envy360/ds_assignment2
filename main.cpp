@@ -14,6 +14,7 @@ public:
     {
         size = n;
         arr = new int[n];
+        for(int i=0; i<size; i++) arr[i] = 0;
         top1 = -1;
         top2 = size;
     }
@@ -89,6 +90,15 @@ public:
     {
         return ( size - top2 );
     }
+
+    void printArray()
+    {
+        cout << "Array =";
+        for(int i=0; i<size; i++) cout << " " << arr[i];
+        cout << endl;
+        cout << "size 1: " << size_first() << endl;
+        cout << "size 2: " << size_second() << endl;
+    }
 };
 
 /* Driver program to test twStacks class */
@@ -97,21 +107,30 @@ int main()
     try {
         twoStacksOneArray ts(5);
         ts.push_first(5);
-        cout << "size 1: " << ts.size_first() << endl;
-        cout << "size 2: " << ts.size_second() << endl;
+        ts.printArray();
+        /*
         cout << "Popped element from stack1 is "
              << ts.pop_first() << endl;
         cout << "Popped element from stack1 is "
              << ts.pop_first() << endl;
+        */
         ts.push_second(10);
+        ts.printArray();
         ts.push_second(15);
+        ts.printArray();
         ts.push_first(11);
+        ts.printArray();
         ts.push_second(7);
+        ts.printArray();
+        ts.push_second(100);
+        ts.printArray();
         cout << "Popped element from stack1 is "
              << ts.pop_first() << endl;
         ts.push_second(40);
+        ts.printArray();
         cout << "\nPopped element from stack2 is "
              << ts.pop_second() << endl;
+        ts.printArray();
     } catch (out_of_range& excpt){
         cout << endl << "Out of Range" << endl;
         cout << excpt.what() << endl;
