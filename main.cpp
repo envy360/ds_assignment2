@@ -23,11 +23,12 @@ public:
     void push_first(int x)
     {
         // There is at least one empty space for new element
-        if (top1 < top2 - 1) {
+        //if (top1 < top2 - 1) {
             // top1++;
             // arr[top1] = x;
-        }
-        else {
+        //}
+        //else {
+        if (top1 == top2 - 1) {
             cout << "Stack Overflow! Doubling Array size." << endl;
             doubleStackArray();
             // exit(1);
@@ -41,11 +42,12 @@ public:
     {
         // There is at least one empty
         // space for new element
-        if (top1 < top2 - 1) {
+        //if (top1 < top2 - 1) {
             // top2--;
             // arr[top2] = x;
-        }
-        else {
+        //}
+        //else {
+        if (top1 == top2 - 1) {
             cout << "Stack Overflow! Doubling Array size." << endl;
             doubleStackArray();
             // exit(1);
@@ -63,9 +65,7 @@ public:
             return x;
         }
         else {
-            // cout << "Stack 1 UnderFlow";
             throw out_of_range("First Stack UnderFlow");
-            // exit(1);
         }
     }
 
@@ -78,9 +78,7 @@ public:
             return x;
         }
         else {
-            // cout << "Stack 2 UnderFlow";
             throw out_of_range("Second Stack UnderFlow");
-            exit(1);
         }
     }
 
@@ -152,10 +150,10 @@ int main()
         ts.push_second(7);
         cout << "stk2 -> push 7" << endl;
         ts.printArray();
-        ts.push_first(100);
-        cout << "stk1 -> push 100" << endl;
-        //ts.push_second(100);
-        // cout << "stk2 -> push 100" << endl;
+        //ts.push_first(100);
+        // cout << "stk1 -> push 100" << endl;
+        ts.push_second(100);
+        cout << "stk2 -> push 100" << endl;
         ts.printArray();
         /*
         cout << "Popped element from stack1 is "
