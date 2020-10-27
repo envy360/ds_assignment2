@@ -120,24 +120,16 @@ int main()
         twoStacksOneArray ts(5);
         ts.printArray();
         ts.push_first(5);
-        // cout << "stk1 -> push 5" << endl;
         ts.printArray();
         ts.push_second(10);
-        // cout << "stk2 -> push 10" << endl;
         ts.printArray();
         ts.push_second(15);
-        // cout << "stk2 -> push 15" << endl;
         ts.printArray();
         ts.push_first(11);
-        // cout << "stk1 -> push 11" << endl;
         ts.printArray();
         ts.push_second(7);
-        // cout << "stk2 -> push 7" << endl;
         ts.printArray();
-        //ts.push_first(100);
-        // cout << "stk1 -> push 100" << endl;
         ts.push_second(100);
-        // cout << "stk2 -> push 100" << endl;
         ts.printArray();
         cout << "Popped element from first stack is "
              << ts.pop_first() << endl;
