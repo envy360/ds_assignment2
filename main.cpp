@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <stdlib.h>
 
@@ -14,7 +13,9 @@ public:
     {
         size = n;
         arr = new int[n];
+        // Initialize array to 0; redundant step but to better illustrate the result
         for(int i=0; i<size; i++) arr[i] = 0;
+        // Initialize pointer position for empty stacks
         top1 = -1;
         top2 = size;
     }
@@ -22,16 +23,10 @@ public:
     // Method to push an element x to stack1
     void push_first(int x)
     {
-        // There is at least one empty space for new element
-        //if (top1 < top2 - 1) {
-            // top1++;
-            // arr[top1] = x;
-        //}
-        //else {
-        if (top1 == top2 - 1) {
+        cout << "Push " << x << " into first stack." << endl;
+        if (top1 == top2 - 1) { // If stack array full
             cout << "Stack Overflow! Doubling Array size." << endl;
             doubleStackArray();
-            // exit(1);
         }
         top1++;
         arr[top1] = x;
@@ -40,17 +35,10 @@ public:
     // Method to push an element x to stack2
     void push_second(int x)
     {
-        // There is at least one empty
-        // space for new element
-        //if (top1 < top2 - 1) {
-            // top2--;
-            // arr[top2] = x;
-        //}
-        //else {
-        if (top1 == top2 - 1) {
+        cout << "Push " << x << " into second stack." << endl;
+        if (top1 == top2 - 1) { // If stack array full
             cout << "Stack Overflow! Doubling Array size." << endl;
             doubleStackArray();
-            // exit(1);
         }
         top2--;
         arr[top2] = x;
@@ -61,6 +49,7 @@ public:
     {
         if (top1 >= 0) {
             int x = arr[top1];
+            arr[top1] = 0; // redundant step to reset but just for illustartion
             top1--;
             return x;
         }
@@ -74,6 +63,7 @@ public:
     {
         if (top2 < size) {
             int x = arr[top2];
+            arr[top2] = 0; // redundant step to reset but just for illustartion
             top2++;
             return x;
         }
@@ -99,8 +89,8 @@ public:
         cout << "Array =";
         for(int i=0; i<size; i++) cout << " " << arr[i];
         cout << endl;
-        cout << "size 1: " << size_first() << endl;
-        cout << "size 2: " << size_second() << endl;
+        cout << "First stack size: " << size_first() << endl;
+        cout << "Second stack size: " << size_second() << endl<<endl;
     }
 
     void doubleStackArray()
@@ -130,40 +120,33 @@ int main()
         twoStacksOneArray ts(5);
         ts.printArray();
         ts.push_first(5);
-        cout << "stk1 -> push 5" << endl;
+        // cout << "stk1 -> push 5" << endl;
         ts.printArray();
-        /*
-        cout << "Popped element from stack1 is "
-             << ts.pop_first() << endl;
-        cout << "Popped element from stack1 is "
-             << ts.pop_first() << endl;
-        */
         ts.push_second(10);
-        cout << "stk2 -> push 10" << endl;
+        // cout << "stk2 -> push 10" << endl;
         ts.printArray();
         ts.push_second(15);
-        cout << "stk2 -> push 15" << endl;
+        // cout << "stk2 -> push 15" << endl;
         ts.printArray();
         ts.push_first(11);
-        cout << "stk1 -> push 11" << endl;
+        // cout << "stk1 -> push 11" << endl;
         ts.printArray();
         ts.push_second(7);
-        cout << "stk2 -> push 7" << endl;
+        // cout << "stk2 -> push 7" << endl;
         ts.printArray();
         //ts.push_first(100);
         // cout << "stk1 -> push 100" << endl;
         ts.push_second(100);
-        cout << "stk2 -> push 100" << endl;
+        // cout << "stk2 -> push 100" << endl;
         ts.printArray();
-        /*
-        cout << "Popped element from stack1 is "
+        cout << "Popped element from first stack is "
              << ts.pop_first() << endl;
+        ts.printArray();
         ts.push_second(40);
         ts.printArray();
-        cout << "\nPopped element from stack2 is "
+        cout << "Popped element from second stack is "
              << ts.pop_second() << endl;
-        */
-        // ts.printArray();
+        ts.printArray();
     } catch (out_of_range& excpt){
         cout << endl << "Out of Range" << endl;
         cout << excpt.what() << endl;
